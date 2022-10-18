@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 
 const Post = () => {
   const [userPosts, setUserPosts] = useState([]);
-  console.log("post", userPosts);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -11,7 +10,6 @@ const Post = () => {
         "https://strangers-things.herokuapp.com/api/2209-FTB-ET-WEB-FT/posts"
       );
       const info = await database.json();
-      console.log(info.data.posts);
       setUserPosts(info.data.posts);
     };
     fetchPost();
@@ -30,7 +28,7 @@ const Post = () => {
             </div>
             </div>
         ))
-      ) : (
+      ) : ( 
         <h2>loading...</h2>
       )}
     </div>
