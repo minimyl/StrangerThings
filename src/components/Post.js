@@ -1,29 +1,32 @@
-import React, {useState, useEffect} from "react"
-import ReactDOM from 'react-dom'
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
 
 const Post = () => {
-    const [userPosts, setUserPosts] = useState([])
-console.log("post", userPosts)
+  const [userPosts, setUserPosts] = useState([]);
+  console.log("post", userPosts);
 
-    useEffect(() => {
-        const fetchPost = async() => {
-            const database = await fetch("https://strangers-things.herokuapp.com/api/2209-FTB-ET-WEB-FT/posts")
-            const data = await database.json()
-console.log(database)
-            setUserPosts(data)
+  useEffect(() => {
+    const fetchPost = async () => {
+      const database = await fetch(
+        "https://strangers-things.herokuapp.com/api/2209-FTB-ET-WEB-FT/posts"
+      );
+      const info = await database.json();
+      console.log(info.data.posts);
+      setUserPosts(info.data.posts);
+    };
+    fetchPost();
+  }, []);
+  return (
+    <div>
+      {userPosts ? (
+        userPosts.map((userPost) => (
+          <div key={userPost.location}>{userPost.title}</div>
+        ))
+      ) : (
+        <h2>loading...</h2>
+      )}
+    </div>
+  );
+};
 
-        }
-        fetchPost()
-    },[])
-
-    return (
-        <div>
-            <h2>post</h2>
-            {
-                userPosts.map(userPost => <div key={userPost.id}>{userPost.title}</div>)
-            }
-        </div>
-    )
-}
-
-export default Post
+export default Post;
