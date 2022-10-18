@@ -20,7 +20,15 @@ const Post = () => {
     <div>
       {userPosts ? (
         userPosts.map((userPost) => (
-          <div key={userPost.location}>{userPost.title}</div>
+          <div key={userPost._id}>
+            <h3>{userPost.title}</h3>
+            <div>
+                {userPost.description}
+                <div>
+                    {userPost.price}
+                </div>
+            </div>
+            </div>
         ))
       ) : (
         <h2>loading...</h2>
