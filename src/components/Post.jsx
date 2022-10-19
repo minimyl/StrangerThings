@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 const Post = () => {
   const [userPosts, setUserPosts] = useState([]);
+  // pass in fetchPosts as props in here??
 
   useEffect(() => {
     const fetchPost = async () => {

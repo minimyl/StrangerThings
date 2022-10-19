@@ -16,7 +16,7 @@ const Main = () => {
       setUserPosts(returnedPosts)
     }
     fetchPosts()
-  })
+  },[])
 
 function filterPosts() {
 if (!searchInput){
@@ -26,6 +26,7 @@ if (!searchInput){
 
     return found.title.toLowerCase() === searchInput.toLocaleLowerCase()
   })
+  console.log(filteredPosts)
   return filteredPosts
 }}
 
