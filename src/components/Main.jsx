@@ -3,17 +3,19 @@ import { Navbar } from "./"
 import { Post } from "./"
 import { Search } from "./"
 import { Register } from "./"
+import {fetchingPost} from '../api.js'
 
 const Main = () => {
   const [userPosts, setUserPosts] = useState([]);
   const [searchInput, setSearchInput] =useState('');
+  
 
   useEffect(() => {
-    const fetchSearchData = async () => {
-      const searchData = await fetchSearchedData
-      // START HERE TOMORROW.
-      // i think we need to wrap in try catch and include a function for fetchedSearchedData (seepuppybowl ss)
+    const fetchPosts = async () => {
+      const returnedPosts= await fetchingPost()
+      setUserPosts(returnedPosts)
     }
+    fetchPosts()
   })
 
 function filterPosts() {
@@ -30,7 +32,7 @@ if (!searchInput){
   return (
     <div id="main">
       <Navbar/> 
-      <Search userPosts= {userPosts} setSearchInput= {setSearchInput}/>
+      <Search userPosts= {userPosts} setSearchInput= {setSearchInput} />
       {userPosts ? (
         <Post userPosts= {filterPosts()}/>
       ): (

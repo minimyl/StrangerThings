@@ -4,7 +4,6 @@ const Search = (props) => {
     const userPosts = props.userPosts
     const setSearchInput = props.setSearchInput
 
-
     const handleChange = (e) => {
         e.preventDefault()
         setSearchInput(e.target.value)
