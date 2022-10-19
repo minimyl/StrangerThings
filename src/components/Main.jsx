@@ -3,11 +3,12 @@ import { Navbar } from "./"
 import { Post } from "./"
 import { Search } from "./"
 import { Register } from "./"
-import {fetchingPost} from '../api.js'
+import {fetchingPost, returnedSearches} from '../api.js'
 
 const Main = () => {
   const [userPosts, setUserPosts] = useState([]);
   const [searchInput, setSearchInput] =useState('');
+
   
 
   useEffect(() => {
@@ -24,7 +25,7 @@ if (!searchInput){
 } else {
   let filteredPosts = userPosts.filter((found) =>{
 
-    return found.title.toLowerCase() === searchInput.toLocaleLowerCase()
+    return found.title.toLowerCase().includes(searchInput.toLowerCase())  
   })
   console.log(filteredPosts)
   return filteredPosts
@@ -33,7 +34,7 @@ if (!searchInput){
   return (
     <div id="main">
       <Navbar/> 
-      <Search userPosts= {userPosts} setSearchInput= {setSearchInput} />
+      <Search  setSearchInput= {setSearchInput} />
       {userPosts ? (
         <Post userPosts= {filterPosts()}/>
       ): (

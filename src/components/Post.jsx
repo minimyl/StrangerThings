@@ -1,20 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
-const Post = () => {
-  const [userPosts, setUserPosts] = useState([]);
-  // pass in fetchPosts as props in here??
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      const database = await fetch(
-        "https://strangers-things.herokuapp.com/api/2209-FTB-ET-WEB-FT/posts"
-      );
-      const info = await database.json();
-      setUserPosts(info.data.posts);
-    };
-    fetchPost();
-  }, []);
+const Post = (props) => {
+const userPosts = props.userPosts
   return (
     <div>
       {userPosts ? (
