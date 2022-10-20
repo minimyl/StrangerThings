@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from "react"
-// import {returnedSearches} from '../api.js'
+import {Post} from './'
 
 
 const Search = (props) => {
     const userPosts = props.userPosts
-    const setSearchInput = props.setSearchInput
+    var setSearchInput = props.setSearchInput
+    var [searchInput, setSearchInput] = useState('')
+    console.log(searchInput)
 
 function addFilter(userPosts) {
     const filterPost = props.filterPost
@@ -12,14 +14,17 @@ function addFilter(userPosts) {
     return filterPost.filter((filterPost) => filterPost.title === filterPost)[0]
 }
     
-
-    // useEffect(() => {
-    //     const searchUseEffect = async () => {
-    //       const returnedPosts= await returnedSearches()
-    //       setUserInput(returnedPosts)
-    //     }
-    //     searchUseEffect()
-    //   },[])
+function filterPosts() {
+    if (!searchInput) {
+      return userPosts;
+    } else {
+      let filteredPosts = userPosts.filter((found) => {
+        return found.title.toLowerCase().includes(searchInput.toLowerCase());
+      });
+      console.log(filteredPosts);
+      return filteredPosts;
+    }
+  }
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -33,6 +38,7 @@ function addFilter(userPosts) {
          type= "search"
         placeholder="search here"
         onChange= {handleChange} />
+        {userPosts ? <Post userPosts={filterPosts()} /> : <div>loading...</div>}
         </div>
     )
 }

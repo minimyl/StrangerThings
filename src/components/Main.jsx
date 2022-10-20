@@ -15,10 +15,7 @@ const Main = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Navbar />}>
-        <Route element = {<Search setSearchInput={setSearchInput} />
-      {userPosts ? <Post userPosts={filterPosts()} /> : 'loading'}
-} />
-        <Route path="posts" element={<Post userPosts={userPosts} />} />
+        <Route path="posts" element={<Search setSearchInput={setSearchInput} searchInput = {searchInput} userPosts={userPosts}/>} />
         <Route path="login" element={<LogInOut />} />
         <Route path="register" element={<Register />} />
       </Route>
@@ -33,25 +30,24 @@ const Main = () => {
     fetchPosts();
   }, []);
 
-  function filterPosts() {
-    if (!searchInput) {
-      return userPosts;
-    } else {
-      let filteredPosts = userPosts.filter((found) => {
-        return found.title.toLowerCase().includes(searchInput.toLowerCase());
-      });
-      console.log(filteredPosts);
-      return filteredPosts;
-    }
-  }
+  // function filterPosts() {
+  //   if (!searchInput) {
+  //     return userPosts;
+  //   } else {
+  //     let filteredPosts = userPosts.filter((found) => {
+  //       return found.title.toLowerCase().includes(searchInput.toLowerCase());
+  //     });
+  //     console.log(filteredPosts);
+  //     return filteredPosts;
+  //   }
+  // }
 
   return (
     <div id="main">
-      {/* <Search setSearchInput={setSearchInput} />
-      {userPosts ? <Post userPosts={filterPosts()} /> : <div>loading...</div>} */}
+      
 
       <RouterProvider router={router}></RouterProvider>
-      {/* </div> */}
+     
     </div>
   );
 };
