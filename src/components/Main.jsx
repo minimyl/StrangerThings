@@ -41,7 +41,6 @@ const Main = () => {
 
   return (
     <div id="main">
-      <SinglePost />
       <RouterProvider router={router}></RouterProvider>
     </div>
   );

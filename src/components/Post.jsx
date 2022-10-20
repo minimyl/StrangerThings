@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { SinglePost } from "./";
 
 const Post = (props) => {
-  const [posts, setAllPosts] = useState([]);
+  // const [posts, setAllPosts] = useState([]);
   const { id } = useParams();
   const userPosts = props.userPosts;
   console.log(userPosts);
@@ -12,8 +12,9 @@ const Post = (props) => {
     <div>
       {id ? (
         <Outlet context={filterPosts()} />
-      ) : posts.length ? (
-        posts.map((post) => {
+      ) : userPosts.length ? (
+        userPosts.map((post) => {
+          console.log(post)
           return <SinglePost key={`post-id-${post._id}`} post={post} />;
         })
       ) : (
