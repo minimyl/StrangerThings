@@ -4,7 +4,7 @@ import { Post } from "./"
 import { Search } from "./"
 import { Register } from "./"
 import {fetchingPost} from '../api.js'
-// import {LogInOut} from './'
+import {LogInOut} from './'
 
 const Main = () => {
   const [userPosts, setUserPosts] = useState([]);
@@ -35,7 +35,7 @@ if (!searchInput){
   return (
     <div id="main">
       <Navbar/> 
-      {/* <LogInOut /> */}
+      <LogInOut />
       <Search  setSearchInput= {setSearchInput} />
       {userPosts ? (
         <Post userPosts= {filterPosts()}/>

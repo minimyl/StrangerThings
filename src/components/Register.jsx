@@ -19,8 +19,6 @@ const Register = () => {
         }
       );
       const response = await result.json();
-      // console.log(response.data.token)
-
       return response.data.token;
       
     } catch (error) {
