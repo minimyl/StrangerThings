@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 const Post = (props) => {
   const userPosts = props.userPosts;
+  console.log(userPosts)
   return (
     <div>
       {userPosts ? (
