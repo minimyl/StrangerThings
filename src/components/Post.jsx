@@ -1,25 +1,35 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
+import { useParams } from "react-router-dom";
+import { SinglePost } from "./";
 
 const Post = (props) => {
+  const [posts, setAllPosts] = useState([]);
+  const { id } = useParams();
   const userPosts = props.userPosts;
-  console.log(userPosts)
+  console.log(userPosts);
   return (
     <div>
-      {userPosts ? (
-        userPosts.map((userPost) => (
-          <div key={userPost._id}>
-            <h3>{userPost.title}</h3>
-              {userPost.location}
-              {userPost.description}
-              {userPost.price}
-          </div>
-        ))
+      {id ? (
+        <Outlet context={filterPosts()} />
+      ) : posts.length ? (
+        posts.map((post) => {
+          return <SinglePost key={`post-id-${post._id}`} post={post} />;
+        })
       ) : (
-        <h2>loading...</h2>
+        <div> Loading Posts! </div>
       )}
     </div>
   );
 };
 
 export default Post;
+
+// {userPosts ? (
+//   userPosts.map((userPost) => (
+//     <h3>{userPosts.title}</h3>
+//     {userPosts.location}
+//     {userPosts.description}
+//     {userPosts.price}
+//   ))
+// )
