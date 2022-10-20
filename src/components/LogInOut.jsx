@@ -43,6 +43,7 @@ const LogInOut = () => {
 
   return (
     <div className="box">
+        <h4>LogIn</h4>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input minLength='8' id="username" type="text" required />

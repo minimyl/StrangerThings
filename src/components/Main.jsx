@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from "react";
-import { Navbar } from "./"
-import { Post } from "./"
-import { Search } from "./"
-import { Register } from "./"
+import { Navbar, Post, Search, Register, LogInOut,} from "./"
 import {fetchingPost} from '../api.js'
-import {LogInOut} from './'
+import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from "react-router-dom"
 
 const Main = () => {
   const [userPosts, setUserPosts] = useState([]);
   const [searchInput, setSearchInput] =useState('');
 
-  
+  const router = createBrowserRouter(createRoutesFromElements(
+    <Route path="/" element={<Navbar />}>
+      <Route path="register" element={<Register/>}/>
+    </Route>
+  ))
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -35,14 +36,14 @@ if (!searchInput){
   return (
     <div id="main">
       <Navbar/> 
-      <LogInOut />
+      <LogInOut /><Register/>
       <Search  setSearchInput= {setSearchInput} />
       {userPosts ? (
         <Post userPosts= {filterPosts()}/>
       ): (
         <div>loading...</div>
       )}
-     <Register/>
+     
   </div>
   );
 };

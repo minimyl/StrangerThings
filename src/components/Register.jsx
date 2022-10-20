@@ -43,6 +43,7 @@ const Register = () => {
 
   return (
     <div className="box">
+      <h4>Register</h4>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
         <input minLength='8' id="username" type="text" required />
