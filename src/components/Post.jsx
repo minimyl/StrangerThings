@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { SinglePost } from "./";
 
 const Post = (props) => {
-  // const [posts, setAllPosts] = useState([]);
+
   const { id } = useParams();
   const userPosts = props.userPosts;
   console.log(userPosts);

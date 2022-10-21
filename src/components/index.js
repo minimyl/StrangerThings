@@ -5,3 +5,4 @@ export { default as Search } from "./Search";
 export { default as Register } from "./Register";
 export { default as LogInOut } from "./LogInOut";
 export { default as SinglePost } from "./SinglePost";
+export { default as PostsDetails } from "./PostsDetails"

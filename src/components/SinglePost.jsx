@@ -10,7 +10,7 @@ const SinglePost = (props) => {
       {post.location}
       {post.description}
       {post.price}
-      <Link to={`/posts/details/${post._id}`}>
+      <Link to={`/newEdit/${post._id}`}>
         <button className="postDetailsButton">Post Details</button>
       </Link>
     </div>
