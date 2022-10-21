@@ -3,8 +3,10 @@ import { Post } from "./";
 
 const Search = (props) => {
   const userPosts = props.userPosts;
-  var setSearchInput = props.setSearchInput;
-  var [searchInput, setSearchInput] = useState("");
+  const setUserPosts = props.setUserPosts
+  const searchInput = props.searchInput
+  const setSearchInput = props.setSearchInput;
+   
 
   function filterPosts() {
     if (!searchInput) {
@@ -32,7 +34,7 @@ const Search = (props) => {
         placeholder="search here"
         onChange={handleChange}
       />
-      {userPosts ? <Post userPosts={filterPosts()} /> : <div>loading...</div>}
+      {userPosts ? <Post userPosts={filterPosts()} setUserPosts={setUserPosts}/> : <div>loading...</div>}
     </div>
   );
 };

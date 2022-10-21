@@ -1,17 +1,18 @@
 import React from "react";
 import { createPost } from "../api.js";
 
-const CreatePosts = () => {
+const CreatePosts = (props) => {
+    const {userPosts, setUserPosts} = props
   async function handleSubmit(event) {
     try {
       event.preventDefault();
       const title = event.target[0].value;
       const description = event.target[1].value;
       const price = event.target[2].value;
-      const willDeliver = event.target[3].value;
-      const token = await registerUser(username, password);
-      localStorage.removeItem("token");
-      localStorage.setItem("token", token);
+      const willDeliver = true
+      const token = localStorage.getItem('token')
+      const newPost = await createPost(token, title, description, price, willDeliver, userPosts, setUserPosts );
+      console.log(newPost)
     } catch (error) {
       console.log(error);
     }
@@ -27,7 +28,7 @@ const CreatePosts = () => {
         <label>Price:</label>
         <input id="username" type="text" required /> <br></br>
         <label>Will Deliver?</label>
-        <input id="username" type="text" required />
+        {/* <input id="willDeliver" type="boolean" required /> */}
         <button className="logInSubmit" type="submit">
           Submit
         </button>

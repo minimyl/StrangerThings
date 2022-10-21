@@ -6,9 +6,10 @@ import { SinglePost, CreatePosts } from "./";
 const Post = (props) => {
   const { id } = useParams();
   const userPosts = props.userPosts;
+  const setUserPosts = props.setUserPosts;
   return (
     <div className="allPostBody">
-      <CreatePosts />
+      <CreatePosts userPosts={userPosts} setUserPosts={setUserPosts}/>
       {id ? (
         <Outlet context={filterPosts()} />
       ) : userPosts.length ? (

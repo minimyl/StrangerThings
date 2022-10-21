@@ -35,12 +35,12 @@ export async function updatePost(post, id, token) {
    }
 }
 
-export async function createPost(token, title, description, price, willDeliver){
-  fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/posts', {
+export async function createPost(token, title, description, price, willDeliver, userPosts, setUserPosts){
+  fetch(`${BASE_URL}/api/${COHORT}/posts`, {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer TOKEN_STRING_HERE'
+      'Authorization': `Bearer ${token}` 
     },
     body: JSON.stringify({
       post: {
@@ -53,6 +53,7 @@ export async function createPost(token, title, description, price, willDeliver){
   }).then(response => response.json())
     .then(result => {
       console.log(result);
+      setUserPosts([...userPosts,result.data.post])
     })
     .catch(console.error);
 }

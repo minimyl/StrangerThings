@@ -29,9 +29,10 @@ const Main = () => {
               setSearchInput={setSearchInput}
               searchInput={searchInput}
               userPosts={userPosts}
+              setUserPosts={setUserPosts}
             />
           }
-          element2={<CreatePosts />}
+          element2={<CreatePosts userPosts={userPosts} setUserPosts={setUserPosts}/>}
         />
         <Route
           path="newEdit/:postId"
