@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { deletePost, updatePost } from "../api.js";
 
 const PostsDetails = ({ userPosts, setUserPosts }) => {
+    const navigate = useNavigate();
   const { postId } = useParams();
   const [originalPost, setOriginalPost] = useState({});
   const [formDetails, setFormDetails] = useState({
@@ -13,6 +15,7 @@ const PostsDetails = ({ userPosts, setUserPosts }) => {
   });
   useEffect(() => {
     const post = filterPostsDetails()[0];
+
     setFormDetails(post);
     setOriginalPost(post);
   }, []);
@@ -26,23 +29,65 @@ const PostsDetails = ({ userPosts, setUserPosts }) => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    console.log("you can't handle the page details");
+
     setSearchInput(e.target.value);
   };
+
+  async function handleDelete(e) {
+    console.log(e, 'eeeeeeeee')
+    e.preventDefault();
+    const toDelete = e.target.id;
+    const token = localStorage.getItem("token");
+    const deleted = await deletePost(toDelete, token);
+    if (deleted) {
+      const newPosts = userPosts.filter((post) => post.id !== 
+      e);
+      setUserPosts(newPosts)
+      navigate('/posts')
+    }
+  }
+
+  //  async function handleUpdate(e) {
+  //    e.preventDefault();
+  //    const updatedPost = await updatePost(
+  //      formDetails,
+  //      post._id,
+  //      localStorage.getItem("token")
+  //    );
+  //     console.log(updatedPost)
+  // }
 
   return (
     <>
       <h3>this is posts details component</h3>
-      <div className="singlePostBody">
-        <h3 className="postTitle">{originalPost.title}</h3>
-        <div>{originalPost.location}</div>
-        <div>{originalPost.description}</div>
-        <div>{originalPost.price}</div>
-        <label htmlFor="will-deliver">Will Deliver</label>
-        <Link to={`/posts`}>
-          <button className="postDetailsButton">Go Back</button>
-        </Link>
-      </div>
+      {originalPost && originalPost.title ? (
+        <div className="singlePostBody">
+          <h3 className="postTitle">{originalPost.title}</h3>
+          <div>{originalPost.location}</div>
+          <div>{originalPost.description}</div>
+          <div>{originalPost.price}</div>
+          <label htmlFor="will-deliver">Will Deliver</label>
+          <button
+            id={originalPost._id ? `${originalPost._id}` : null}
+            onClick={(e) => {
+              handleDelete(e);
+            }}
+          >
+            Delete Post
+          </button>
+          {/* <button
+          id={originalPost._id ? `${originalPost._id}` : null}
+          onClick={(e) => {
+            handleUpdate(e);
+          }}
+        >
+          Update Post
+        </button> */}
+          <Link to={`/posts`}>
+            <button className="postDetailsButton">Go Back</button>
+          </Link>
+        </div>
+      ) : null}
     </>
   );
 };

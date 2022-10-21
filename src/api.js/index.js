@@ -10,15 +10,49 @@ export async function fetchingPost() {
     console.error(err);
   }
 }
-// export async function returnedSearches() {
-//     try {
-//         const returnedSearchUrl = await fetch(`${BASE_URL}/api/${COHORT}/posts`);
-//         const postFound = await returnedSearchUrl.json();
-//         console.log(postFound)
-//         return postFound.data
-//     } catch (error) {
-//         console.error(err)
-//     }
-// }
+export async function deletePost(id,token) {
+  const options = {
+   method:'DELETE',
+   headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+   } 
+  }
+  const response = await fetch(`${BASE_URL}/api/${COHORT}/posts/${id}`,options)
+  const result = await response.json()
+  return result.data
+}
+export async function updatePost(post, id, token) {
+  const options = {
+    method:'POST',
+    headers: {
+     'Content-Type': 'application/json',
+     'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({
+      post
+    })
+   }
+}
 
-
+export async function createPost(token, title, description, price, willDeliver){
+  fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/posts', {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer TOKEN_STRING_HERE'
+    },
+    body: JSON.stringify({
+      post: {
+        title:title ,
+        description:description ,
+        price:price ,
+        willDeliver:willDeliver
+      }
+    })
+  }).then(response => response.json())
+    .then(result => {
+      console.log(result);
+    })
+    .catch(console.error);
+}
