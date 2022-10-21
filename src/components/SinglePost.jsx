@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const SinglePost = (props) => {
   const post = props.post;
-  console.log("prop post", post);
+  // console.log(post);
   return (
     <div className="singlePostBody">
       <h3 className="postTitle">{post.title}</h3>

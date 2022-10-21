@@ -15,16 +15,20 @@ const Main = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Navbar />}>
-          <Route path="posts"
-            element={
-              <Search
-                setSearchInput={setSearchInput}
-                searchInput={searchInput}
-                userPosts={userPosts}
-              />
-            }  
-          />
-          <Route path="newEdit/:postId" element={<PostsDetails userPosts={userPosts}/>}/>
+        <Route
+          path="posts"
+          element={
+            <Search
+              setSearchInput={setSearchInput}
+              searchInput={searchInput}
+              userPosts={userPosts}
+            />
+          }
+        />
+        <Route
+          path="newEdit/:postId"
+          element={<PostsDetails userPosts={userPosts} />}
+        />
         <Route path="login" element={<LogInOut />} />
         <Route path="register" element={<Register />} />
       </Route>
