@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Search, Register, LogInOut, PostsDetails } from "./";
+import {
+  Navbar,
+  Search,
+  Register,
+  LogInOut,
+  PostsDetails,
+  CreatePosts,
+} from "./";
 import { fetchingPost } from "../api.js";
 import {
   createBrowserRouter,
@@ -24,6 +31,7 @@ const Main = () => {
               userPosts={userPosts}
             />
           }
+          element2={<CreatePosts />}
         />
         <Route
           path="newEdit/:postId"
