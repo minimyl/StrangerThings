@@ -9,12 +9,12 @@ const Post = (props) => {
   const userPosts = props.userPosts;
   console.log(userPosts);
   return (
-    <div>
+    <div className="allPostBody">
       {id ? (
         <Outlet context={filterPosts()} />
       ) : userPosts.length ? (
         userPosts.map((post) => {
-          console.log(post)
+          console.log(post);
           return <SinglePost key={`post-id-${post._id}`} post={post} />;
         })
       ) : (

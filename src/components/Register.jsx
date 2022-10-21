@@ -20,7 +20,6 @@ const Register = () => {
       );
       const response = await result.json();
       return response.data.token;
-      
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +34,6 @@ const Register = () => {
       const token = await registerUser(username, password);
       localStorage.removeItem("token");
       localStorage.setItem("token", token);
-    
     } catch (error) {
       console.log(error);
     }
@@ -43,13 +41,16 @@ const Register = () => {
 
   return (
     <div className="box">
-      <h4>Register</h4>
-      <form onSubmit={handleSubmit}>
+      <h4 className="logInTitle">Register</h4>
+      <p className="logInTitleBelow">For First Time Users</p>
+      <form className="logInForm" onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
-        <input minLength='8' id="username" type="text" required />
+        <input minLength="8" id="username" type="text" required /> <br></br>
         <label htmlFor="password">Password:</label>
-        <input minLength='8' id="password" type="text" />
-        <button type="submit">Submit</button>
+        <input minLength="8" id="password" type="text" />
+        <button className="logInSubmit" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );

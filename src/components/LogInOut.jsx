@@ -13,18 +13,16 @@ const LogInOut = () => {
           body: JSON.stringify({
             user: {
               username,
-              password
+              password,
             },
           }),
         }
       );
-      const resp = await resultLogIn.json();  
-      return resp.data
-      
+      const resp = await resultLogIn.json();
+      return resp.data;
     } catch (error) {
       console.log(error);
     }
-    
   }
   async function handleSubmit(event) {
     try {
@@ -32,10 +30,10 @@ const LogInOut = () => {
       const username = event.target[0].value;
       const password = event.target[1].value;
       const registeredUser = await logInUser(username, password);
-      const token = registeredUser.token
+      const token = registeredUser.token;
       localStorage.removeItem("token");
       localStorage.setItem("token", token);
-    // console.log(token, 'i am token')
+      // console.log(token, 'i am token')
     } catch (error) {
       console.log(error);
     }
@@ -43,16 +41,19 @@ const LogInOut = () => {
 
   return (
     <div className="box">
-        <h4>LogIn</h4>
-      <form onSubmit={handleSubmit}>
+      <h4 className="logInTitle">Welcome Back!</h4>
+      <p className="logInTitleBelow">Please Log in Below.</p>
+      <form className="logInForm" onSubmit={handleSubmit}>
         <label htmlFor="username">Username:</label>
-        <input minLength='8' id="username" type="text" required />
+        <input minLength="8" id="username" type="text" required /> <br></br>
         <label htmlFor="password">Password:</label>
-        <input minLength='8' id="password" type="text" />
-        <button type="submit">Submit</button>
+        <input minLength="8" id="password" type="text" />
+        <button className="logInSubmit" type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );
 };
 
-export default LogInOut
+export default LogInOut;
