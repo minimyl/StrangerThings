@@ -20,7 +20,7 @@ export async function deletePost(id,token) {
   }
   const response = await fetch(`${BASE_URL}/api/${COHORT}/posts/${id}`,options)
   const result = await response.json()
-  return result.data
+  return result
 }
 export async function updatePost(post, id, token) {
   const options = {

@@ -39,9 +39,10 @@ const PostsDetails = ({ userPosts, setUserPosts }) => {
     const toDelete = e.target.id;
     const token = localStorage.getItem("token");
     const deleted = await deletePost(toDelete, token);
+    console.log(deleted, 'dkfjdkfsdklfh')
     if (deleted) {
-      const newPosts = userPosts.filter((post) => post.id !== 
-      e);
+      const newPosts = userPosts.filter((post) => post._id != 
+      toDelete);
       setUserPosts(newPosts)
       navigate('/posts')
     }

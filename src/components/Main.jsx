@@ -36,7 +36,7 @@ const Main = () => {
         />
         <Route
           path="newEdit/:postId"
-          element={<PostsDetails userPosts={userPosts} />}
+          element={<PostsDetails userPosts={userPosts} setUserPosts={setUserPosts}/>}
         />
         <Route path="login" element={<LogInOut />} />
         <Route path="register" element={<Register />} />
