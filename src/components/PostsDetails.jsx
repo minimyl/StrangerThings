@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { deletePost, updatePost } from "../api.js";
 
 const PostsDetails = ({ userPosts, setUserPosts }) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const { postId } = useParams();
   const [originalPost, setOriginalPost] = useState({});
   const [formDetails, setFormDetails] = useState({
@@ -34,17 +34,16 @@ const PostsDetails = ({ userPosts, setUserPosts }) => {
   };
 
   async function handleDelete(e) {
-    console.log(e, 'eeeeeeeee')
+    console.log(e, "eeeeeeeee");
     e.preventDefault();
     const toDelete = e.target.id;
     const token = localStorage.getItem("token");
     const deleted = await deletePost(toDelete, token);
-    console.log(deleted, 'dkfjdkfsdklfh')
+    console.log(deleted, "dkfjdkfsdklfh");
     if (deleted) {
-      const newPosts = userPosts.filter((post) => post._id != 
-      toDelete);
-      setUserPosts(newPosts)
-      navigate('/posts')
+      const newPosts = userPosts.filter((post) => post._id != toDelete);
+      setUserPosts(newPosts);
+      navigate("/posts");
     }
   }
 
@@ -60,7 +59,7 @@ const PostsDetails = ({ userPosts, setUserPosts }) => {
 
   return (
     <>
-      <h3>this is posts details component</h3>
+      <h3 className="messageTitle">Post Details:</h3>
       {originalPost && originalPost.title ? (
         <div className="singlePostBody">
           <h3 className="postTitle">{originalPost.title}</h3>
@@ -69,6 +68,7 @@ const PostsDetails = ({ userPosts, setUserPosts }) => {
           <div>{originalPost.price}</div>
           <label htmlFor="will-deliver">Will Deliver</label>
           <button
+            className="postDetailsButton"
             id={originalPost._id ? `${originalPost._id}` : null}
             onClick={(e) => {
               handleDelete(e);

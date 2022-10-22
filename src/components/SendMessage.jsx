@@ -24,7 +24,7 @@ const SendMessage = (props) => {
   return (
     <>
       <div className="box">
-        <h4 className="logInTitle">User Profile</h4>
+        <h4 className="messageTitle">reply to user's post</h4>
         <h5 className="logInTitleBelow">Send Message</h5>
         <form className="logInForm" onSubmit={handleSubmit}>
           <label>Message Subject:</label>

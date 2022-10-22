@@ -65,7 +65,7 @@ body {
   padding: 0.4em;
   max-height: 35px;
   background-color: white;
-  min-width: 40em;
+  min-width: 20em;
   text-align: center;
 }
 .box {
@@ -110,4 +110,32 @@ body {
   letter-spacing: 0.3em;
   font-size: 2em;
   margin-top: -1em;
+}
+
+.usersMessages {
+  font-family: 'PT Sans Narrow', sans-serif;
+  text-transform: lowercase;
+  letter-spacing: 0.3em;
+  font-size: 2em;
+  text-align: center;
+}
+.messageTitle{
+  font-family: 'PT Sans Narrow', sans-serif;
+  text-transform: capitalize;
+  font-style: italic;
+  text-decoration: underline;
+  font-size: 2.2em;
+}
+.topPostButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: -8em;
+}
+#createPostBox {
+  margin-top: 3em;
+}
+
+.searchBarDiv {
+  display: flex;
 }

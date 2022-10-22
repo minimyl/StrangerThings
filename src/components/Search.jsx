@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Post } from "./";
+import { Link } from "react-router-dom";
 
 const Search = (props) => {
   const userPosts = props.userPosts;
-  const setUserPosts = props.setUserPosts
-  const searchInput = props.searchInput
+  const setUserPosts = props.setUserPosts;
+  const searchInput = props.searchInput;
   const setSearchInput = props.setSearchInput;
-   
 
   function filterPosts() {
     if (!searchInput) {
@@ -28,13 +28,30 @@ const Search = (props) => {
 
   return (
     <div id="searchBar">
-      <input
-        className="searchBarInputBar"
-        type="search"
-        placeholder="search here"
-        onChange={handleChange}
-      />
-      {userPosts ? <Post userPosts={filterPosts()} setUserPosts={setUserPosts}/> : <div>loading...</div>}
+      <div className="searchBarDiv">
+        <input
+          className="searchBarInputBar"
+          type="search"
+          placeholder="search here"
+          onChange={handleChange}
+        />
+      </div>
+      <div className="topPostButtons">
+        <Link to={`/register`}>
+          <button className="postDetailsButton">Register</button>
+        </Link>
+        <Link to={`/login`}>
+          <button className="postDetailsButton">LogIn</button>
+        </Link>
+        <Link to={`/profile`}>
+          <button className="postDetailsButton">User Profile</button>
+        </Link>
+      </div>
+      {userPosts ? (
+        <Post userPosts={filterPosts()} setUserPosts={setUserPosts} />
+      ) : (
+        <div>loading...</div>
+      )}
     </div>
   );
 };

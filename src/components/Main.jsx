@@ -7,6 +7,7 @@ import {
   PostsDetails,
   CreatePosts,
   SendMessage,
+  Profile,
 } from "./";
 import { fetchingPost } from "../api.js";
 import {
@@ -52,6 +53,7 @@ const Main = () => {
             <SendMessage messages={messages} setMessages={setMessages} />
           }
         />
+        <Route path="profile" element={<Profile />} />
       </Route>
     )
   );
