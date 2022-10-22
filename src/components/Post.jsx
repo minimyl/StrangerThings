@@ -8,8 +8,8 @@ const Post = (props) => {
   const userPosts = props.userPosts;
   const setUserPosts = props.setUserPosts;
   return (
-    <div className="allPostBody">
-      <CreatePosts userPosts={userPosts} setUserPosts={setUserPosts}/>
+    <div className="postsColumn">
+      <CreatePosts userPosts={userPosts} setUserPosts={setUserPosts} />
       {id ? (
         <Outlet context={filterPosts()} />
       ) : userPosts.length ? (

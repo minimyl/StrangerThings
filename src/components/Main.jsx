@@ -6,6 +6,7 @@ import {
   LogInOut,
   PostsDetails,
   CreatePosts,
+  Profile,
 } from "./";
 import { fetchingPost } from "../api.js";
 import {
@@ -18,6 +19,7 @@ import {
 const Main = () => {
   const [userPosts, setUserPosts] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [messages, setMessages] = useState([]);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -32,14 +34,22 @@ const Main = () => {
               setUserPosts={setUserPosts}
             />
           }
-          element2={<CreatePosts userPosts={userPosts} setUserPosts={setUserPosts}/>}
+          element2={
+            <CreatePosts userPosts={userPosts} setUserPosts={setUserPosts} />
+          }
         />
         <Route
           path="newEdit/:postId"
-          element={<PostsDetails userPosts={userPosts} setUserPosts={setUserPosts}/>}
+          element={
+            <PostsDetails userPosts={userPosts} setUserPosts={setUserPosts} />
+          }
         />
         <Route path="login" element={<LogInOut />} />
         <Route path="register" element={<Register />} />
+        <Route
+          path="profile"
+          element={<Profile messages={messages} setMessages={setMessages} />}
+        />
       </Route>
     )
   );
