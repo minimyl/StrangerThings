@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createMessage } from "../api.js";
 
-const Profile = (props) => {
+const SendMessage = (props) => {
   const { messages, setMessages } = props;
   async function handleSubmit(event) {
     try {
@@ -39,4 +39,4 @@ const Profile = (props) => {
     </>
   );
 };
-export default Profile;
+export default SendMessage;

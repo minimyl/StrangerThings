@@ -6,7 +6,7 @@ import {
   LogInOut,
   PostsDetails,
   CreatePosts,
-  Profile,
+  SendMessage,
 } from "./";
 import { fetchingPost } from "../api.js";
 import {
@@ -47,8 +47,10 @@ const Main = () => {
         <Route path="login" element={<LogInOut />} />
         <Route path="register" element={<Register />} />
         <Route
-          path="profile"
-          element={<Profile messages={messages} setMessages={setMessages} />}
+          path="message"
+          element={
+            <SendMessage messages={messages} setMessages={setMessages} />
+          }
         />
       </Route>
     )

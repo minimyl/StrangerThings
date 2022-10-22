@@ -13,6 +13,9 @@ const SinglePost = (props) => {
       <Link to={`/newEdit/${post._id}`}>
         <button className="postDetailsButton">Post Details</button>
       </Link>
+      <Link to={`/message`}>
+        <button className="postDetailsButton">Message</button>
+      </Link>
     </div>
   );
 };
