@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 const LogInOut = () => {
+  const navigate = useNavigate();
   async function logInUser(username, password) {
     try {
       const resultLogIn = await fetch(
@@ -33,6 +35,7 @@ const LogInOut = () => {
       const token = registeredUser.token;
       localStorage.removeItem("token");
       localStorage.setItem("token", token);
+      navigate("/posts");
       // console.log(token, 'i am token')
     } catch (error) {
       console.log(error);
@@ -52,6 +55,9 @@ const LogInOut = () => {
           Submit
         </button>
       </form>
+      <Link to={`/posts`}>
+        <button className="postDetailsButton">Go Back</button>
+      </Link>
     </div>
   );
 };

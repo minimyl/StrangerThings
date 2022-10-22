@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { createPost } from "../api.js";
 
 const CreatePosts = (props) => {
   const { userPosts, setUserPosts } = props;
+
   async function handleSubmit(event) {
     try {
       event.preventDefault();

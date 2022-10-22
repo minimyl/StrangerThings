@@ -39,23 +39,12 @@ const PostsDetails = ({ userPosts, setUserPosts }) => {
     const toDelete = e.target.id;
     const token = localStorage.getItem("token");
     const deleted = await deletePost(toDelete, token);
-    console.log(deleted, "dkfjdkfsdklfh");
     if (deleted) {
       const newPosts = userPosts.filter((post) => post._id != toDelete);
       setUserPosts(newPosts);
       navigate("/posts");
     }
   }
-
-  //  async function handleUpdate(e) {
-  //    e.preventDefault();
-  //    const updatedPost = await updatePost(
-  //      formDetails,
-  //      post._id,
-  //      localStorage.getItem("token")
-  //    );
-  //     console.log(updatedPost)
-  // }
 
   return (
     <>
@@ -76,14 +65,6 @@ const PostsDetails = ({ userPosts, setUserPosts }) => {
           >
             Delete Post
           </button>
-          {/* <button
-          id={originalPost._id ? `${originalPost._id}` : null}
-          onClick={(e) => {
-            handleUpdate(e);
-          }}
-        >
-          Update Post
-        </button> */}
           <Link to={`/posts`}>
             <button className="postDetailsButton">Go Back</button>
           </Link>

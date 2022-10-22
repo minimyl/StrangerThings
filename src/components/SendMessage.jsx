@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createMessage } from "../api.js";
+import { Link } from "react-router-dom";
 
 const SendMessage = (props) => {
   const { messages, setMessages } = props;
@@ -35,6 +36,9 @@ const SendMessage = (props) => {
             Send
           </button>
         </form>
+        <Link to={`/posts`}>
+          <button className="postDetailsButton">Go Back</button>
+        </Link>
       </div>
     </>
   );

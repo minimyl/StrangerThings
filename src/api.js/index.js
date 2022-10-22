@@ -25,21 +25,6 @@ export async function deletePost(id, token) {
   const result = await response.json();
   return result;
 }
-
-// ------ i think we should delete this as its not a project requirement! ----------
-// export async function updatePost(post, id, token) {
-//   const options = {
-//     method:'POST',
-//     headers: {
-//      'Content-Type': 'application/json',
-//      'Authorization': `Bearer ${token}`
-//     },
-//     body: JSON.stringify({
-//       post
-//     })
-//    }
-// }
-
 export async function createPost(
   token,
   title,
@@ -71,7 +56,33 @@ export async function createPost(
     })
     .catch(console.error);
 }
-
+//  ORIGINAL, i think this url goes to profile though...
+// export async function createMessage(
+//   token,
+//   messageSubject,
+//   message,
+//   messages,
+//   setMessages
+// ) {
+//   fetch(`${BASE_URL}/api/${COHORT}/users/me`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${token}`,
+//     },
+//     body: JSON.stringify({
+//       messageSubject: messageSubject,
+//       message: message,
+//     }),
+//   })
+//     .then((response) => response.json())
+//     .then((result) => {
+//       console.log("logging Result in API", result);
+//       setMessages([...messages, result.data]);
+//     })
+//     .catch(console.error);
+// }
+// ------
 export async function createMessage(
   token,
   messageSubject,
@@ -79,6 +90,27 @@ export async function createMessage(
   messages,
   setMessages
 ) {
+  // {post_id is not a valid way to be fetching this}
+  fetch(`${BASE_URL}/api/${COHORT}/posts/${POST_ID}/messages`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      messageSubject: messageSubject,
+      message: message,
+    }),
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      console.log("logging Result in API", result);
+      setMessages([...messages, result.data]);
+    })
+    .catch(console.error);
+}
+
+export async function displayMessages() {
   fetch(`${BASE_URL}/api/${COHORT}/users/me`, {
     method: "POST",
     headers: {

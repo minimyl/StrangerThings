@@ -7,9 +7,9 @@ const SinglePost = (props) => {
   return (
     <div className="singlePostBody">
       <h3 className="postTitle">{post.title}</h3>
-      {post.location}
-      {post.description}
-      {post.price}
+      {/* {post.location} */}
+      <p>{post.description}</p>
+      <p>Listed Price: {post.price}</p>
       <Link to={`/newEdit/${post._id}`}>
         <button className="postDetailsButton">Post Details</button>
       </Link>

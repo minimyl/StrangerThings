@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
   async function registerUser(username, password) {
     try {
       const result = await fetch(
@@ -34,6 +36,7 @@ const Register = () => {
       const token = await registerUser(username, password);
       localStorage.removeItem("token");
       localStorage.setItem("token", token);
+      navigate("/posts");
     } catch (error) {
       console.log(error);
     }
@@ -52,6 +55,9 @@ const Register = () => {
           Submit
         </button>
       </form>
+      <Link to={`/posts`}>
+        <button className="postDetailsButton">Go Back</button>
+      </Link>
     </div>
   );
 };
