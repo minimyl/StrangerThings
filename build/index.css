@@ -1,0 +1,141 @@
+body {
+  font-family: 'Inconsolata', monospace;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+
+#navbar {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 2.4em;
+  flex-grow: 1;
+  max-height: 10%;
+  min-height: 110px;
+  background-color: #5C5F58;
+  color:  #DCE1E3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.3em;
+  text-shadow:   0 0 20px #B73225, 0 0 50px #0000FF;
+}
+
+.postsColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.singlePostBody {
+  border: 4px solid #5C5F58;
+  display: flex;
+  flex-direction: column;
+  max-width: 94%;
+  margin: 0.5em;
+  padding: 0.7em;
+  align-items: center;
+  border-radius: 10px;
+  background-color: rgba(183, 50, 37, 0.1);
+}
+.postTitle {
+  font-size: 1.3em;
+  
+}
+
+.postDetailsButton {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 1.1em;
+  color: #DCE1E3;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  margin-top: 0.7em;
+  margin-bottom: 0.5em;
+  border-radius: 10px;
+  padding: 0.4em;
+  background-color: #004E7C;
+  border: 3px solid #004E7C;
+}
+
+.searchBarInputBar {
+  display: flex;
+  flex-grow: 1;
+  margin: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 0.4em;
+  max-height: 35px;
+  background-color: white;
+  min-width: 20em;
+  text-align: center;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.logInForm{
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  gap: 10px;
+}
+
+.logInSubmit{
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 1.1em;
+  text-transform: lowercase;
+  color: #DCE1E3;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  border-radius: 10px;
+  padding: 0.4em;
+  background-color: #004E7C;
+  border: 1px solid #004E7C;
+}
+
+.logInTitle {
+  font-family: 'PT Sans Narrow', sans-serif;
+  text-transform: lowercase;
+  letter-spacing: 0.2em;
+  text-decoration: underline;
+  font-size: 2.2em;
+}
+
+.logInTitleBelow{
+  font-family: 'PT Sans Narrow', sans-serif;
+  text-transform: lowercase;
+  letter-spacing: 0.3em;
+  font-size: 2em;
+  margin-top: -1em;
+}
+
+.usersMessages {
+  font-family: 'PT Sans Narrow', sans-serif;
+  text-transform: lowercase;
+  letter-spacing: 0.3em;
+  font-size: 2em;
+  text-align: center;
+}
+.messageTitle{
+  font-family: 'PT Sans Narrow', sans-serif;
+  text-transform: capitalize;
+  font-style: italic;
+  text-decoration: underline;
+  font-size: 2.2em;
+}
+.topPostButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: -8em;
+}
+#createPostBox {
+  margin-top: 3em;
+}
+
+.searchBarDiv {
+  display: flex;
+}

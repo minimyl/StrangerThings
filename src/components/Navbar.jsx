@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -10,6 +10,9 @@ const Navbar = () => {
       <div>
         <Outlet />
       </div>
+      <Link to={`/posts`}>
+        <button className="postDetailsButton">Go to Posts Page</button>
+      </Link>
     </>
   );
 };
