@@ -7,7 +7,6 @@ const Profile = () => {
       <h4 className="usersMessages">your messages below:</h4>
       <div className="singlePostBody">
         <h3 className="postTitle">message title here...</h3>
-        {/* {post.location} */}
         <p>from user: ... here</p>
         <p>message description here...</p>
       </div>

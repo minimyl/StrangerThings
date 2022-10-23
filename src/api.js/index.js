@@ -51,38 +51,11 @@ export async function createPost(
   })
     .then((response) => response.json())
     .then((result) => {
-      // console.log(result);
       setUserPosts([...userPosts, result.data.post]);
     })
     .catch(console.error);
 }
-//  ORIGINAL, i think this url goes to profile though...
-// export async function createMessage(
-//   token,
-//   messageSubject,
-//   message,
-//   messages,
-//   setMessages
-// ) {
-//   fetch(`${BASE_URL}/api/${COHORT}/users/me`, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${token}`,
-//     },
-//     body: JSON.stringify({
-//       messageSubject: messageSubject,
-//       message: message,
-//     }),
-//   })
-//     .then((response) => response.json())
-//     .then((result) => {
-//       console.log("logging Result in API", result);
-//       setMessages([...messages, result.data]);
-//     })
-//     .catch(console.error);
-// }
-// ------
+
 export async function createMessage(
   token,
   messageSubject,
@@ -91,7 +64,7 @@ export async function createMessage(
   setMessages
 ) {
   // {post_id is not a valid way to be fetching this}
-  fetch(`${BASE_URL}/api/${COHORT}/posts/${POST_ID}/messages`, {
+  fetch(`${BASE_URL}/api/${COHORT}/posts/ ${POST_ID}/messages`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -124,7 +97,6 @@ export async function displayMessages() {
   })
     .then((response) => response.json())
     .then((result) => {
-      console.log("logging Result in API", result);
       setMessages([...messages, result.data]);
     })
     .catch(console.error);

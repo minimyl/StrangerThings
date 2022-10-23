@@ -31,8 +31,6 @@ const Register = () => {
       event.preventDefault();
       const username = event.target[0].value;
       const password = event.target[1].value;
-      // console.log(username)
-      // console.log(password)
       const token = await registerUser(username, password);
       localStorage.removeItem("token");
       localStorage.setItem("token", token);
